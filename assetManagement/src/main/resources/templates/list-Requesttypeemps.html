@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyeleaf Demo</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<div class="container">
+		<h3>Request Type Directory</h3>
+		<a th:href="@{/requesttypeemps/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Type Of Request </a>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<!--th>Employee ID</th> -->
+					<th>Request Type</th>
+					<th>Action</th> 
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="req : ${requesttypeemps}">
+					<!-- td th:text="${emp.id}" /> -->
+					<td th:text="${req.requesttype}" />
+					<td>
+						<a th:href="@{/requesttypeemps/showForForUpdate(requestid=${req.id})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
+						<a th:href="@{/requesttypeemps/deleteRecord(requestid=${req.id})}" class="btn btn-danger btn-sm mb-3" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
