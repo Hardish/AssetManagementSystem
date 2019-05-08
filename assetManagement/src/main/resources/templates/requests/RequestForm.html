@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyeleaf Demo</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<div class="container">
+		<h3>Add New Request</h3>
+		<a th:href="@{/requests/list}" class="btn btn-primary btn-sm mb-3">
+			Back </a>
+		<form name="MAINFORM" action="#" th:action="@{/requests/save}"
+			th:object="${reqRecord}" method="POST">
+			<input type="hidden" th:field="*{id}" /> 
+			<input class="form-control mb-4 col-4" type="text" th:field="*{requesttype}"
+				placeholder="Request Type" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestsubtype}" placeholder="Request Subtype" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestdescription}" placeholder="Request Description" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestdate}" placeholder="Request Date" />
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestemployee_id}" placeholder="Request Raised By" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestfirstname}" placeholder="First Name" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestlastname}" placeholder="Last Name" />  
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestdepartmentname}" placeholder="Department Name" />
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestassetname}" placeholder="Request Asset Name" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestunits}" placeholder="No of Units" />
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestpriority}" placeholder="Request Priority" />
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requeststatus}" placeholder="Request Status" />
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestassigtoowner}" placeholder="Transfer Asset to" /> 
+<!--		<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestnewownerempfirstname}" placeholder="Transfer To Employee Name" />   -->
+<!--		<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestassignedempid}" placeholder="Request Assigned To Employee ID" />   -->
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestassignedto}" placeholder="Request Assigned To" /> 
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestassigneddate}" placeholder="Assigned Date" /> 			
+			<input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestclosebefore}" placeholder="Close Before" /> 
+
+			<button type="submit" class="btn btn-info col-2">Save</button>
+		</form>
+	</div>
+</body>
+</html>

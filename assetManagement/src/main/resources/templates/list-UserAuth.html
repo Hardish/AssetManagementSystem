@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyeleaf Demo</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+<a hred="http://localhost:8080/employees/list" class="btn btn-primary btn-sm mb-3"> Employee </a>
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<a th:href="@{/userCredentials/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>User Name</th>
+					<th>Password</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="uc : ${userCredentials}">
+					<!-- td th:text="${uc.id}" /> -->
+					<td th:text="${uc.userName}" />
+					<td th:text="${uc.password}" />
+					<td>
+						<a th:href="@{/userCredentials/showForForUpdate(id=${uc.id})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

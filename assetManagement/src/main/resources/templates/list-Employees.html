@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyeleaf Demo</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<!-- <a hred="http://localhost:8080/employees/list" class="btn btn-primary btn-sm mb-3"> Auth </a> -->
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<a th:href="@{/employees/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<!--th>Employee ID</th> -->
+					<th>Name</th>
+					<th>Department</th>
+					<th>Employee Position</th>
+					<th>Email</th>
+					<th>User Name</th>
+					<th>Hire Date</th>
+					<th>End Date</th>
+					<th>Phone</th>
+					<th>Salary ($)</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="emp : ${employees}">
+					<!-- td th:text="${emp.id}" /> -->
+					<td th:text="${emp.firstname + ', '+emp.lastname}" />
+					<td th:text="${emp.getDepartment().getDeptName()}" />
+					<td th:text="${emp.role.roleName}" />
+					<td th:text="${emp.email}" />
+					<td th:text="${emp.userName}" />
+					<td th:text="${emp.endDate}" />
+					<td th:text="${emp.hireDate}" />
+					<td th:text="${emp.phoneNumber}" />
+					<td th:text="${emp.salary}" />
+					<td width='100%'>
+						<a th:href="@{/employees/showForForUpdate(employeeid=${emp.id})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
+						<a th:href="@{/employees/deleteRecord(employeeid=${emp.id})}" class="btn btn-danger btn-sm mb-3" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyeleaf Demo</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<div class="container">
+		<h3>Add New Type Of Request</h3>
+		<a th:href="@{/requesttypesas/list}" class="btn btn-primary btn-sm mb-3">
+			Back </a>
+		<form name="MAINFORM" action="#" th:action="@{/requesttypesas/save}"
+			th:object="${reqRecord}" method="POST">
+			<input type="hidden" th:field="*{id}" /> 
+			<input class="form-control mb-4 col-4" type="text" th:field="*{requesttype}"
+				placeholder="Request Type" /> 
+			<button type="submit" class="btn btn-info col-2">Save</button>
+		</form>
+	</div>
+</body>
+</html>

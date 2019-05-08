@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thyeleaf Demo</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+
+</head>
+<body>
+	<div class="container">
+		<h3>Request Directory</h3>
+		<a th:href="@{/requests/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Request </a>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<!--th>Employee ID</th> -->
+					<th>Request Type</th>
+					<th>Request Subtype</th>
+					<th>Request Description </th>
+					<th>Request Date</th>
+					<th>Employee ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Department Name</th>
+					<th>Asset Name</th>
+					<th>Units </th>
+					<th>Request Priority</th>
+					<th>Request Status </th>
+					<th>Transfer Asset to </th>
+<!--				<th>Transfer To Employee Name</th>  -->
+<!--				<th>Request Assigned To Employee ID-->
+					<th>Assigned To </th>
+					<th>Assigned Date</th>
+					<th>Closed Before </th>
+
+
+
+					<th>Action</th> 
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="req : ${requests}">
+					<!-- td th:text="${emp.id}" /> -->
+					<td th:text="${req.requesttype}" />
+					<td th:text="${req.requestsubtype}" />
+					<td th:text="${req.requestdescription}" />
+					<td th:text="${req.requestdate}" />
+					<td th:text="${req.requestemployee_id}" />
+					<td th:text="${req.requestfirstname}" />
+					<td th:text="${req.requestlastname}" />
+					<td th:text="${req.requestdepartmentname}" />
+					<td th:text="${req.requestassetname}" />
+					<td th:text="${req.requestunits}" />
+					<td th:text="${req.requestpriority}" />
+					<td th:text="${req.requeststatus}" />
+					<td th:text="${req.requestassigtoowner}" />
+<!--				<td th:text="${req.requestnewownerempfirstname}" /> -->
+<!--				<td th:text="${req.requestassignedempid}" /> -->
+					<td th:text="${req.requestassignedto}" />
+					<td th:text="${req.requestassigneddate}" />
+					<td th:text="${req.requestclosebefore}" />
+					<td>
+						<a th:href="@{/requests/showForForUpdate(requestid=${req.id})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
+						<a th:href="@{/requests/deleteRecord(requestid=${req.id})}" class="btn btn-danger btn-sm mb-3" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

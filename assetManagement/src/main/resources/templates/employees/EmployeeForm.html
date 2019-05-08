@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Asset Management</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <h3>Employee Form</h3>
+        <a th:href="@{/employees/list}" class="btn btn-primary btn-sm mb-3">
+            Back </a>
+        <!-- <div th:text="${departments}">
+
+        </div> -->
+        <form name="MAINFORM" action="#" th:action="@{/employees/save}" th:object="${empRecord}" method="POST">
+            <input type="hidden" th:field="*{id}" />
+
+            <input class="form-control mb-4 col-4" type="text" th:field="*{firstname}" placeholder="First Name" />
+            <input class="form-control mb-4 col-4" type="text" th:field="*{lastname}" placeholder="Last Name" />
+            <input class="form-control mb-4 col-4" type="text" th:field="*{email}" placeholder="Email" />
+            <input class="form-control mb-4 col-4" type="text" th:field="*{hireDate}"
+                placeholder="Hire Date (YYYY-DD-MM)" />
+            <input class="form-control mb-4 col-4" type="text" th:field="*{endDate}"
+                placeholder="End Date (YYYY-DD-MM)" />
+            <input class="form-control mb-4 col-4" type="text" th:field="*{phoneNumber}" placeholder="Phone Number" />
+            <input class="form-control mb-4 col-4" type="text" th:field="*{salary}" placeholder="Salary" />
+
+            <select class="form-control mb-4 col-4" th:field="*{department}" id="department" >
+                <option value="0">Select Department</option>
+                <option th:each="department : ${departments}" th:value="${department.getDeptId()}"
+                    th:text="${department.getDeptName()}"
+                    th:selected="${(department.getDeptId() == empRecord?.getDepartment()?.getDeptId())} ">
+                </option>
+            </select>
+
+            <select class="form-control mb-4 col-4" th:field="*{role}" id="role" >
+                <option value="0">Select Role</option>
+                <option th:each="role : ${roles}" th:value="${role.getRoleId()}"
+                    th:text="${role.getRoleName()}"
+                    th:selected="${(role.getRoleId() == empRecord?.getRole()?.getRoleId())} ">
+                </option>
+            </select>
+
+            <button type="submit" class="btn btn-info col-2">Save</button>
+        </form>
+    </div>
+</body>
+</html>

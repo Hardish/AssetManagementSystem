@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    
+    <title>Asset Management</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"    
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            /* need for iframe height 100% to work */
+        }
+
+        iframe {
+            box-sizing: border-box;
+            /* make the border size be included in the height */
+            display: block;
+            /* make them block to fix white space margin */
+            width: 100%;
+            frameborder: 0;
+            scrolling: no;
+        }
+
+        iframe:nth-child(1) {
+            height: 40px;
+        }
+
+        iframe:nth-child(2) {
+            height: calc(100% - 40px);
+            width: 10%;
+            align: left;
+        }
+
+        iframe:nth-child(3) {
+            height: calc(100% - 40px);
+            width: 100%;
+            align: left;
+        }
+
+
+        .box {
+            display: inline-block;
+            height: 100vh;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+
+
+
+</head>
+<div class="container">
+    <frameset rows="5%,80%,5%" border="3" align="center">
+        <frame src="/userAuth/Header" name="head">
+        <frameset cols="15%,85%">
+            <frame src="/userAuth/SideMenu" name="SIDE" scrolling="no">
+                <frame src="/userAuth/Body" name="MAIN">
+        </frameset>
+        <frame src="/userAuth/Bottom" name="bottom">
+    </frameset>
+
+</div>
+</html>
