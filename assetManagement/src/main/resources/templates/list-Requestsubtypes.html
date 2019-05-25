@@ -18,34 +18,32 @@
 </head>
 <body>
 	<div class="container">
-		<h3>Request Types</h3>
-		<a th:href="@{/requesttypes/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Type Of Request</a>
+		<h3>Request Sub Types</h3>
+		<a th:href="@{/requestsubtypes/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Sub Type Of Request</a>
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
 					<!--th>Employee ID</th> -->
 					<th>Request Type</th>
+					<th>Request Sub Type</th>
 					
-					<th>Role</th>
 					<th>Action</th> 
 					
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="req : ${requesttypes}">
+				<tr th:each="req : ${requestsubtypes}">
 					<!-- td th:text="${emp.id}" /> -->
 					<td th:text="${req.requesttype}" />
+					<td th:text="${req.requestsubtype}" />
 					
-					<td th:text="${req.role}" />
 					<td>
-						<a th:href="@{/requesttypes/showForForUpdate(requesttype=${req.requesttype})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
-						<a th:href="@{/requesttypes/deleteRecord(requesttype=${req.requesttype})}" class="btn btn-danger btn-sm mb-3" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete </a>
+						<a th:href="@{/requestsubtypes/showForForUpdate(requestsubtype=${req.requestsubtype})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
+						<a th:href="@{/requestsubtypes/deleteRecord(requestsubtype=${req.requestsubtype})}" class="btn btn-danger btn-sm mb-3" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete </a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	
-
 </body>
 </html>

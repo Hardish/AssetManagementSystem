@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.decepticons.assetManagement.entity.Employee;
 import com.decepticons.assetManagement.entity.Request;
 import com.decepticons.assetManagement.repositories.IRequestRepository;
 import com.decepticons.assetManagement.services.protocols.IRequestService;
@@ -13,6 +14,7 @@ import com.decepticons.assetManagement.services.protocols.IRequestService;
 @Service
 public class RequestService implements IRequestService
 {
+	
 	@Autowired
 	private IRequestRepository reqRepo;
 	
@@ -49,5 +51,15 @@ public class RequestService implements IRequestService
 	public void deleteById(int id) {
 		reqRepo.deleteById(id);
 	}
+//	@Override
+//	public List<Request> getAllRequests(String requestfirstname) {
+//		// TODO Auto-generated method stub
+//		return reqRepo.findByRequestfirstname(requestfirstname);
+//	}
 	
+//	@Override
+//	public List<Request> getAllRequests(int id) {
+////		// TODO Auto-generated method stub
+//		return reqRepo.findAll(id);
+//	}
 }

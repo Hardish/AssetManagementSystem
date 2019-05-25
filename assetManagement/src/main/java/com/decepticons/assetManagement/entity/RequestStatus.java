@@ -22,45 +22,29 @@ import lombok.Setter;
 
 
 @Data
-@Document(collection = "RequestTypes")
-public class RequestTypes
+@Document(collection = "RequestStatus")
+public class RequestStatus
 {
 	  @Id
 	  private ObjectId id = new ObjectId();
-//	  private String id;
-	  
-	  
-	  @Field("requesttype")
-	  public String requesttype;
-	  
-	  
-	  
-	  @Field("role")
-	  public String role;
+
+	  @Field("requeststatus")
+	  public String requeststatus;
 	 
-	  
-	  public RequestTypes(ObjectId id  ,String requesttype ,String role)
+
+	  public RequestStatus(ObjectId id  ,String requeststatus)
 	  {
 		  this.id = id;
-		  this.requesttype = requesttype;
-		
-		  this.role = role;
-		
+		  this.requeststatus = requeststatus;
 	  }
-//	  public RequestTypes(String requesttype,String role)
-//	  {
-//		  super();
-//		
-//		  this.requesttype = requesttype;
-//		  this.role = role;
-//	  }
-	 public RequestTypes() {
+
+	 public RequestStatus() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public String toString()
 	 {
-		 return "Request Type "+ requesttype+" role "+ role;
+		 return " requeststatus "+ requeststatus;
 	 }
 	
 }

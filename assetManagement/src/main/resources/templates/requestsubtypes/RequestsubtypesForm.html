@@ -19,23 +19,21 @@
 <body>
 	<div class="container">
 		<h3>Add New Type Of Request</h3>
-		<a th:href="@{/requesttypes/list}" class="btn btn-primary btn-sm mb-3">
+		<a th:href="@{/requestsubtypes/list}" class="btn btn-primary btn-sm mb-3">
 			Back </a>
-		<form name="MAINFORM" action="#" th:action="@{/requesttypes/save}"
+		<form name="MAINFORM" action="#" th:action="@{/requestsubtypes/save}"
 			th:object="${reqRecord}" method="POST">
 			<input type="hidden" th:field="*{id}" /> 
-			<input class="form-control mb-4 col-4" type="text" th:field="*{requesttype}"
-				placeholder="Request Type" /> 
-				
-		
+			<input class="form-control mb-4 col-4" type="text" th:field="*{requestsubtype}"
+				placeholder="Request Sub Type" /> 
 			<!-- 	<input class="form-control mb-4 col-4" type="text" th:field="*{role}"
 				placeholder="Provide Role for Request Type" />  -->
 				
-		  <select class="form-control mb-4 col-4" th:field="*{role}" id="role" >
-                <option value="0">Select Role</option>
-                <option th:each="role : ${roles}" th:value="${role.getRoleId()}"
-                    th:text="${role.getRoleName()}"
-                    th:selected="${(role.getRoleId() == empRecord?.getRole()?.getRoleId())} ">
+		<select class="form-control mb-4 col-4" th:field="*{requesttype}" id="requesttype" >
+                <option value="0">Select Request Type</option>
+                <option th:each="requesttype : ${requesttypes}" th:value="${requesttype.getRequesttype()}"
+                    th:text="${requesttype.getRequesttype()}"
+                    th:selected="${(requesttype.getId() == empRecord?.getRequesttype()?.getId())} ">
                 </option>
             </select>
 			<button type="submit" class="btn btn-info col-2">Save</button>

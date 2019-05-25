@@ -50,18 +50,18 @@
 --change 3 on 4/21/19  - requesttypeemp and requesttypesystemAnalyst table created
 -- so can store request types in this and show in drop down list on JSP in future.
 
---CHNAGE #3 started----
-CREATE TABLE requesttypeemp (
-	request_type_id Number,
-    request_type varchar(45) DEFAULT NULL
-  );
-  
-  CREATE TABLE requesttypesystemanalyst (
-	request_type_id Number,
-    request_type varchar(45) DEFAULT NULL
-  );
-  
- ----CHANGE #3 END------------
+----CHNAGE #3 started----
+--CREATE TABLE requesttypeemp (
+--	request_type_id Number,
+--    request_type varchar(45) DEFAULT NULL
+--  );
+--  
+--  CREATE TABLE requesttypesystemanalyst (
+--	request_type_id Number,
+--    request_type varchar(45) DEFAULT NULL
+--  );
+--  
+-- ----CHANGE #3 END------------
  
   
   
@@ -114,7 +114,7 @@ CREATE TABLE departments(
 CREATE TABLE department_manager(
 department_id Number,
 employee_id Number,
-PRIMARY KEY(department_id)
+PRIMARY KEY(department_id,employee_id)
 );
 --END OF CHANGE 2-------------
 
@@ -133,8 +133,6 @@ CREATE TABLE request (
   units Number DEFAULT 1,
   priority Number DEFAULT 5,
   request_status varchar(15) DEFAULT 'Not Accepted',
-  new_owner_empid Number DEFAULT NULL,
- -- new_owner_emp_first_name varchar(45) DEFAULT NULL,
   assigned_to_emp_id Number DEFAULT NULL,
   assigned_to varchar(45) DEFAULT NULL,
   assigned_date Date DEFAULT NULL,

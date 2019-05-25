@@ -13,4 +13,12 @@ public interface IRequestService {
 	public Request findById(int Id);
 	public void save (Request request);
 	public void deleteById(int id);
+	//public List<Request> getAllRequests(String requestfirstname);
+
+	//List<Request> getAllRequests(String requestfirstname);
+
+	//Optional<Request> getAllRequests(int id);
+	
+
+
 }
