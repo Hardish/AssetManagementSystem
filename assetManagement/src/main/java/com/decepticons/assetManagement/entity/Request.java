@@ -69,8 +69,8 @@ public class Request {
 	@Column(name="request_status")
 	private String requeststatus;
 	
-	@Column(name="new_owner_empid")
-	private Integer requestassigtoowner;
+//	@Column(name="new_owner_empid")
+//	private Integer requestassigtoowner;
 	
 //	@Column(name="new_owner_emp_first_name")
 //	private String requestnewownerempfirstname;
@@ -93,7 +93,7 @@ public class Request {
 	public Request(int ID,String request_type, String request_subtype,
 			String request_description, Integer employee_id,String first_name,String last_name,
 			Date request_date, Integer priority,String department_name,String asset_name,
-			Integer units, String request_status,Integer new_owner_empid		//, String new_owner_emp_first_name
+			Integer units, String request_status		//,Integer new_owner_empid, String new_owner_emp_first_name
 			,Integer assigned_to_emp_id,String assigned_to ,Date assigned_date,Date closed_before)
 	{
 		super();
@@ -110,7 +110,7 @@ public class Request {
 		this.requestassetname = asset_name;
 		this.requestunits = units;
 		this.requeststatus = request_status;
-		this.requestassigtoowner = new_owner_empid;
+//		this.requestassigtoowner = new_owner_empid;
 //		this.requestnewownerempfirstname = new_owner_emp_first_name;
 //		this.requestassignedempid = assigned_to_emp_id;
 		this.requestassignedto = assigned_to;
@@ -123,8 +123,8 @@ public class Request {
 	public Request(String request_type, String request_subtype,
 			String request_description, Integer employee_id,String first_name, String last_name,
 			Date request_date,Integer priority,String department_name,String asset_name,
-			Integer units,String request_status,int new_owner_empid 		//, String new_owner_emp_first_name
-			,Integer assigned_to_emp_id,String assigned_to,Date assigned_date,Date closed_before)
+			Integer units,String request_status, 		//int new_owner_empid, String new_owner_emp_first_name
+			Integer assigned_to_emp_id,String assigned_to,Date assigned_date,Date closed_before)
 	{
 		super();
 		this.requesttype = request_type;
@@ -139,7 +139,7 @@ public class Request {
 		this.requestassetname = asset_name;
 		this.requestunits = units;
 		this.requeststatus = request_status;
-		this.requestassigtoowner = new_owner_empid;
+//		this.requestassigtoowner = new_owner_empid;
 //		this.requestnewownerempfirstname = new_owner_emp_first_name;
 //		this.requestassignedempid = assigned_to_emp_id;
 		this.requestassignedto = assigned_to;

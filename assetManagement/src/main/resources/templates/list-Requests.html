@@ -13,14 +13,24 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-
-
+	
+	
+		<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+	<link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=8ffc0b31bc8d9ff82fbb94689dd1d7ff">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/datatable.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
 	<div class="container">
 		<h3>Request Directory</h3>
 		<a th:href="@{/requests/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> Add Request </a>
-		<table class="table table-bordered table-striped">
+		<table id="requestTable" class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
 					<!--th>Employee ID</th> -->
@@ -36,7 +46,7 @@
 					<th>Units </th>
 					<th>Request Priority</th>
 					<th>Request Status </th>
-					<th>Transfer Asset to </th>
+<!-- 					<th>Transfer Asset to </th> -->
 <!--				<th>Transfer To Employee Name</th>  -->
 <!--				<th>Request Assigned To Employee ID-->
 					<th>Assigned To </th>
@@ -64,7 +74,7 @@
 					<td th:text="${req.requestunits}" />
 					<td th:text="${req.requestpriority}" />
 					<td th:text="${req.requeststatus}" />
-					<td th:text="${req.requestassigtoowner}" />
+<!-- 					<td th:text="${req.requestassigtoowner}" /> -->
 <!--				<td th:text="${req.requestnewownerempfirstname}" /> -->
 <!--				<td th:text="${req.requestassignedempid}" /> -->
 					<td th:text="${req.requestassignedto}" />

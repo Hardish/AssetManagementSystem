@@ -1,10 +1,13 @@
 package com.decepticons.assetManagement.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.decepticons.assetManagement.entity.Employee;
 import com.decepticons.assetManagement.entity.RequestTypes;
 import com.decepticons.assetManagement.repositories.IRequestTypesRepository;
 import com.decepticons.assetManagement.services.protocols.IRequestTypesService;
@@ -29,17 +32,21 @@ public class RequestTypesService implements IRequestTypesService {
 	}
 
 	@Override
-	public RequestTypes findByRequestType(String requesttype) {
+	public RequestTypes getByRequestType(String requesttype) {
 		// TODO Auto-generated method stub
 		RequestTypes result = reqtypesRepo.findByRequesttype(requesttype);
 		return result;
-	
 	}
 
 	@Override
-	public void deleteByRequestType(String requesttype) {
+	public void delete(String requesttype) {
 		// TODO Auto-generated method stub
-		reqtypesRepo.deleteByRequesttype(requesttype);
+		RequestTypes p = reqtypesRepo.findByRequesttype(requesttype);
+		reqtypesRepo.delete(p);
 	}
+
+	
+
+
 
 }

@@ -21,31 +21,27 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+
+
 @Data
-@Document(collection = "RequestTypes")
-public class RequestTypes
-{
+@Document(collection = "RequestSubTypes")
+public class RequestSubTypes {
 	  @Id
 	  private ObjectId id = new ObjectId();
 //	  private String id;
 	  
 	  
+	  @Field("requestsubtype")
+	  public String requestsubtype;
 	  @Field("requesttype")
 	  public String requesttype;
+	
 	  
-	  
-	  
-	  @Field("role")
-	  public String role;
-	 
-	  
-	  public RequestTypes(ObjectId id  ,String requesttype ,String role)
+	  public RequestSubTypes(ObjectId id,String requesttype,String requestsubtype)
 	  {
 		  this.id = id;
 		  this.requesttype = requesttype;
-		
-		  this.role = role;
-		
+		  this.requestsubtype = requestsubtype;
 	  }
 //	  public RequestTypes(String requesttype,String role)
 //	  {
@@ -54,13 +50,14 @@ public class RequestTypes
 //		  this.requesttype = requesttype;
 //		  this.role = role;
 //	  }
-	 public RequestTypes() {
+	 public RequestSubTypes() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public String toString()
 	 {
-		 return "Request Type "+ requesttype+" role "+ role;
+		 return "Request Type "+ requesttype+"SubRequest"+requestsubtype ;
 	 }
 	
 }
+

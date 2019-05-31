@@ -11,8 +11,7 @@ public class AssetManagementApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AssetManagementApplication.class, args);
 		
-		//Employee emp = new Employee("Ravi", "Sharma", "a@a.c");
-		//System.out.println(emp.getEmail());
+	
 	}
 
 }

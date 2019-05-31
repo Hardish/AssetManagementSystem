@@ -24,45 +24,103 @@
 		<form name="MAINFORM" action="#" th:action="@{/requests/save}"
 			th:object="${reqRecord}" method="POST">
 			<input type="hidden" th:field="*{id}" /> 
-			<input class="form-control mb-4 col-4" type="text" th:field="*{requesttype}"
-				placeholder="Request Type" /> 
-			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestsubtype}" placeholder="Request Subtype" /> 
+<!-- 			<input class="form-control mb-4 col-4" type="text" th:field="*{requesttype}"
+				placeholder="Request Type" />  -->
+				
+				
+			<select class="form-control mb-4 col-4" th:field="*{requesttype}" id="requesttype" >
+                <option value="0">Select Request Type</option>
+                <option th:each="requesttype : ${requesttypes}" th:value="${requesttype.getRequesttype()}"
+                    th:text="${requesttype.getRequesttype()}"
+                    th:selected="${(requesttype.getId() == empRecord?.getRequesttype()?.getId())} ">
+                </option>
+            </select>
+            
+			<!-- <input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestsubtype}" placeholder="Request Subtype" />  -->
+				
+			<select class="form-control mb-4 col-4" th:field="*{requestsubtype}" id="requestsubtype" >
+                <option value="0">Select Request Sub Type</option>
+                <option th:each="requestsubtype : ${requestsubtypes}" th:value="${requestsubtype.getRequestsubtype()}"
+                    th:text="${requestsubtype.getRequestsubtype()}"
+                    th:selected="${(requestsubtype.getId() == empRecord?.getRequestsubtype()?.getId())} ">
+                </option>
+            </select>
+            
+            
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestdescription}" placeholder="Request Description" /> 
-			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestdate}" placeholder="Request Date" />
+			<input  placeholder="Request Date" class="form-control mb-4 col-4"
+				type="text" onfocus="(this.type='date')" 
+				onblur="(this.type='text')" id="date" th:field="*{requestdate}"/>
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestemployee_id}" placeholder="Request Raised By" /> 
+			
 			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestfirstname}" placeholder="First Name" /> 
+				 type="text" th:field="*{requestfirstname}" placeholder="First Name"  /> 
+				 
+			
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestlastname}" placeholder="Last Name" />  
-			<input class="form-control mb-4 col-4"
+		<!-- 	<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestdepartmentname}" placeholder="Department Name" />
+				 -->
+			<select class="form-control mb-4 col-4" th:field="*{requestdepartmentname}" id="department" >
+                <option value="0">Select Department</option>
+                <option th:each="department : ${departments}" th:value="${department.getDeptId()}"
+                    th:text="${department.getDeptName()}"
+                    th:selected="${(department.getDeptId() == empRecord?.getDepartment()?.getDeptId())} ">
+                </option>
+            </select>
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestassetname}" placeholder="Request Asset Name" /> 
 			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestunits}" placeholder="No of Units" />
+				type="number" min = "0" th:field="*{requestunits}" placeholder="No of Units" />
+				
+				
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestpriority}" placeholder="Request Priority" />
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requeststatus}" placeholder="Request Status" />
-			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestassigtoowner}" placeholder="Transfer Asset to" /> 
+			<!-- <input class="form-control mb-4 col-4"
+				type="text" th:field="*{requestassigtoowner}" placeholder="Transfer Asset to" />  -->
 <!--		<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestnewownerempfirstname}" placeholder="Transfer To Employee Name" />   -->
 <!--		<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestassignedempid}" placeholder="Request Assigned To Employee ID" />   -->
 			<input class="form-control mb-4 col-4"
 				type="text" th:field="*{requestassignedto}" placeholder="Request Assigned To" /> 
-			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestassigneddate}" placeholder="Assigned Date" /> 			
-			<input class="form-control mb-4 col-4"
-				type="text" th:field="*{requestclosebefore}" placeholder="Close Before" /> 
+		<!-- 	<input placeholder="Assigned Date" class="form-control mb-4 col-4" type="text" onfocus="(this.type='date')"  id="date"
+				th:field="*{requestassigneddate}"  />  -->
+				
+			<input placeholder="Assigned Date" class="form-control mb-4 col-4" type="text" onfocus="(this.type='date')" 
+				onblur="(this.type='text')" id="date" th:field="*{requestassigneddate}" >	
+						
+			<input  placeholder="Close Before"  class="form-control mb-4 col-4"
+				type="text" onfocus="(this.type='date')"  onblur="(this.type='text')" id = "date" th:field="*{requestclosebefore}"/> 
 
 			<button type="submit" class="btn btn-info col-2">Save</button>
 		</form>
 	</div>
+	
+	<script>
+	
+	$(document).ready(function () {
+	    $("#date").datepicker({ dateFormat: "MM/dd/yyyy" });
+	});
+	
+ 	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	}) 
+</script>
+
+	
 </body>
 </html>
