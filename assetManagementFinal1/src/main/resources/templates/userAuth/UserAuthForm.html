@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Asset Management</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container">
+		<h3>User Auth Form</h3>
+		<a th:href="@{/userAuth/list}" class="btn btn-primary btn-sm mb-3">
+			Back </a>
+		<form name="MAINFORM" action="#" th:action="@{/userCredentials/save}"	th:object="${empRecord}" method="POST">
+			<input type="hidden" th:field="*{id}" /> 
+			
+			<input class="form-control mb-4 col-4" type="text" th:field="*{userName}"	placeholder="User Name" /> 
+			<input class="form-control mb-4 col-4" type="text" th:field="*{password}" placeholder="Password" /> 
+
+			<button type="submit" class="btn btn-info col-2">Save</button>
+		</form>
+	</div>
+</body>
+
+</html>

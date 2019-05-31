@@ -1,0 +1,104 @@
+<html lang="en" data-layout-decorate="~{main/layout}" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<title>New Request</title>
+</head>
+<body>
+	 <!-- page content -->
+         <div class="right_col" role="main" data-layout-fragment="content">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Request Directory</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                   	<a th:href="@{/requests/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+			        Add New Request </a>
+                       <div class="clearfix"></div>
+                  </div>
+	 <div class="x_content">
+		<table id="requestTable" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<!--th>Employee ID</th> -->
+					<th>Type</th>
+					<th>Subtype</th>
+					<th>Description </th>
+					<th>Date</th>
+				<th>Name</th>
+					<th>Department</th>
+					<th>Asset Name</th>
+					<th>Units </th>
+					<th>Priority</th>
+					<th>Status </th>
+<!-- 					<th>Transfer Asset to </th> -->
+<!--				<th>Transfer To Employee Name</th>  -->
+<!--				<th>Request Assigned To Employee ID-->
+					<th>Assigned To </th>
+					<th>Assigned Date</th>
+					<th>Closed Before </th>
+
+
+
+					<th>Action</th> 
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="req : ${requests}">
+					<!-- td th:text="${emp.id}" /> -->
+					<td th:text="${req.requesttype}" />
+					<td th:text="${req.requestsubtype}" />
+					<td th:text="${req.requestdescription}" />
+					<td th:text="${req.requestdate}" />
+					<td th:text="${req.requestfirstname} +' '+${req.requestlastname}" />
+					<td th:text="${req.requestdepartmentname}" />
+					<td th:text="${req.requestassetname}" />
+					<td th:text="${req.requestunits}" />
+					<td th:text="${req.requestpriority}" />
+					<td th:text="${req.requeststatus}" />
+<!-- 					<td th:text="${req.requestassigtoowner}" /> -->
+<!--				<td th:text="${req.requestnewownerempfirstname}" /> -->
+<!--				<td th:text="${req.requestassignedempid}" /> -->
+					<td th:text="${req.requestassignedto}" />
+					<td th:text="${req.requestassigneddate}" />
+					<td th:text="${req.requestclosebefore}" />
+					<td>
+						<a th:href="@{/requests/showForForUpdate(requestid=${req.id})}" class="btn btn-primary btn-sm mb-3"> Update </a> &nbsp;
+						<a th:href="@{/requests/deleteRecord(requestid=${req.id})}" class="btn btn-danger btn-sm mb-3" onclick="if (!(confirm('Are you sure you want to Delete'))) return false"> Delete </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+	</div>
+	 
+</body>
+</html>

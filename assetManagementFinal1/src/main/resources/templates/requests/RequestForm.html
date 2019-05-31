@@ -1,0 +1,166 @@
+<html lang="en" data-layout-decorate="~{main/layout}" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+
+<title>New Request</title>
+</head>
+<body>
+       <!-- page content -->
+         <div class="right_col" role="main" data-layout-fragment="content">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Add New Request</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                   	<a th:href="@{/userAuth/Home}" class="btn btn-primary btn-sm mb-3">
+			        Return to Home </a>
+                       <div class="clearfix"></div>
+                  </div>
+<!-- 	<a th:href="@{/requests/list}" class="btn btn-primary btn-sm mb-3">
+			Back </a> -->
+			
+			 <div class="x_content">
+			<form name="MAINFORM" action="#" th:action="@{/requests/save}"
+			th:object="${reqRecord}" method="POST"  data-parsley-validate class="form-horizontal form-label-left">
+			<div class="form-group">
+			<input type="hidden" th:field="*{id}" /> 
+			</div>
+<!-- 			<input class="form-control col-md-7 col-xs-12" type="text" th:field="*{requesttype}"
+				placeholder="Request Type" />  -->
+				
+				<div class="form-group">	
+			<select class="form-control col-md-7 col-xs-12" th:field="*{requesttype}" id="requesttype" >
+                <option value="0">Select Request Type</option>
+                <option th:each="requesttype : ${requesttypes}" th:value="${requesttype.getRequesttype()}"
+                    th:text="${requesttype.getRequesttype()}"
+                    th:selected="${(requesttype.getId() == empRecord?.getRequesttype()?.getId())} ">
+                </option>
+            </select>
+            </div>
+		
+			<div class="form-group">
+			<select class="form-control col-md-7 col-xs-12" th:field="*{requestsubtype}" id="requestsubtype" >
+                <option value="0">Select Request Sub Type</option>
+                <option th:each="requestsubtype : ${requestsubtypes}" th:value="${requestsubtype.getRequestsubtype()}"
+                    th:text="${requestsubtype.getRequestsubtype()}"
+                    th:selected="${(requestsubtype.getId() == empRecord?.getRequestsubtype()?.getId())} ">
+                </option>
+            </select>
+            </div>
+            
+            <div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				type="text" th:field="*{requestdescription}" placeholder="Request Description" /> 
+			</div>
+			<div class="form-group">
+			<input  placeholder="Request Date" class="form-control col-md-7 col-xs-12"
+				type="text" onfocus="(this.type='date')" 
+				onblur="(this.type='text')" id="date" th:field="*{requestdate}"/>
+				</div>
+				<div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				type="text" th:field="*{requestempid}" placeholder="Request Raised By" /> 
+			</div>
+			<div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				 type="text" th:field="*{requestfirstname}" placeholder="First Name"  /> 
+			</div>	 
+			<div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				type="text" th:field="*{requestlastname}" placeholder="Last Name" />  
+			</div>
+			<div class="form-group">
+			<select class="form-control col-md-7 col-xs-12" th:field="*{requestdepartmentname}" id="department" >
+                <option value="0">Select Department</option>
+                <option th:each="department : ${departments}" th:value="${department.getDeptName()}"
+                    th:text="${department.getDeptName()}"
+                    th:selected="${(department.getDeptId() == empRecord?.getDepartment()?.getDeptId())} ">
+                </option>
+            </select>
+            </div>
+            <div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				type="text" th:field="*{requestassetname}" placeholder="Request Asset Name" /> 
+			</div>
+			<div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				type="number" min = "0" th:field="*{requestunits}" placeholder="No of Units" />
+			</div>	
+			<div class="form-group">	
+			<input class="form-control col-md-7 col-xs-12"
+				type="text" th:field="*{requestpriority}" placeholder="Request Priority" />
+			</div>
+			<div class="form-group">
+			<select class="form-control col-md-7 col-xs-12" th:field="*{requeststatus}" id="requeststatus" >
+                <option value="0">Select Request Status</option>
+                <option th:each="requeststatus : ${requestsstate}" th:value="${requeststatus.getRequeststatus()}"
+                    th:text="${requeststatus.getRequeststatus()}"
+                    th:selected="${(requeststatus.getId() == empRecord?.getRequeststatus()?.getId())} ">
+                </option>
+            </select>
+            </div>
+            <div class="form-group">
+			<input class="form-control col-md-7 col-xs-12"
+				type="text" th:field="*{requestassignedto}" placeholder="Request Assigned To" /> 
+			</div>
+		    <div class="form-group">
+			<input placeholder="Assigned Date" class="form-control col-md-7 col-xs-12" type="text" onfocus="(this.type='date')" 
+				onblur="(this.type='text')" id="date" th:field="*{requestassigneddate}" >	
+			</div>
+			<div class="form-group">			
+			<input  placeholder="Close Before"  class="form-control col-md-7 col-xs-12"
+				type="text" onfocus="(this.type='date')"  onblur="(this.type='text')" id = "date" th:field="*{requestclosebefore}"/> 
+			</div>
+			 <div class="ln_solid"></div>
+			<div class="form-group">
+			<button type="submit" class="btn btn-info col-2">Save</button>
+			</div>
+		</form>
+			</div>
+          </div>
+        </div>
+        </div>
+        <!-- page content -->
+<script>
+	
+	$(document).ready(function () {
+	    $("#date").datepicker({ dateFormat: "MM/dd/yyyy" });
+	});
+	
+ 	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	}) 
+</script>
+	
+	
+</body>
+</html>

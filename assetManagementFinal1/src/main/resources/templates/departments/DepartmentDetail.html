@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Department Detail</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+	
+<body>
+<div class="container">
+		<h1 th:text="${dept.deptName}"></h1>
+		<br/>
+		<h5>Manager</h5>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<td th:text="${dept.getManager().getFirstname() + ' ' + dept.getManager().getLastname() }" />
+				<td th:text="${dept.getManager().getEmail()}" />
+				<td th:text="${dept.getManager().getPhoneNumber()}" />
+			</tbody>
+		</table>
+		
+		<br/><br/><br/>
+		<h5>Employees</h5>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="emp : ${empList}">
+					<td th:text="${emp.getFirstname() + ' ' + emp.getLastname() }" />
+					<td th:text="${emp.getEmail()}" />
+					<td th:text="${emp.getPhoneNumber()}" />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

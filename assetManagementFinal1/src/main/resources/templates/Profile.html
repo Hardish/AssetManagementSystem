@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{main/layout}" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Profile Page</title>
+</head>
+
+<body >
+  <div class="right_col" role="main" data-layout-fragment="content">
+
+	&nbsp;&nbsp;Welcome <b><span th:text="${employee.getName()}"></span></b><br>
+	&nbsp;&nbsp;Manager : <b><span th:text="${employee.getManagerName()}"></span></b><br>
+	</div>
+</body>
+</html>
+

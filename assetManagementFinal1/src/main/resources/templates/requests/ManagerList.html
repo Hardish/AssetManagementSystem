@@ -1,0 +1,71 @@
+<html lang="en" data-layout-decorate="~{main/layout}" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<title>New Request</title>
+</head>
+<body>
+	 <!-- page content -->
+         <div class="right_col" role="main" data-layout-fragment="content">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Present Manager List</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                   <a th:href="@{/userAuth/Home}" class="btn btn-primary btn-sm mb-3">
+			        Return to Home </a>
+                       <div class="clearfix"></div>
+                  </div>
+	 <div class="x_content">
+		<table id="ManagerTable" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Manager Name</th>
+					<th>Department</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="man : ${manList}">
+					
+					<td th:text="${man.deptEmpId.firstname} + ' ' + ${man.deptEmpId.lastname}"></td>
+					<td th:text=${man.deptId.deptName}></td>
+					
+
+					<td>
+						<a th:href="@{/requests/ManagerRequests(deptid=${man.deptId.deptId}, empid=${man.deptEmpId.Id})}" class="btn btn-primary btn-sm mb-3"> All Requests </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+	</div>
+</body>
+</html>
